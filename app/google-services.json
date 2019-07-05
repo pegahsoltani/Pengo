@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "367415299612",
+    "firebase_url": "https://pengout-b774e.firebaseio.com",
+    "project_id": "pengout-b774e",
+    "storage_bucket": "pengout-b774e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367415299612:android:3d86b37161c774d8",
+        "android_client_info": {
+          "package_name": "com.example.pengout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367415299612-tub5btot27ucmcnncbkl6kgdd5hmu8v7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pengout",
+            "certificate_hash": "248b5a93e2b88d5fbdb6d1c4b50627ed72e0b84b"
+          }
+        },
+        {
+          "client_id": "367415299612-b20p1a97aof5gvj2as2iqsskr9rbns9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhj-KvastaKIBZEpSoq5FLrevrxL2OcLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367415299612-b20p1a97aof5gvj2as2iqsskr9rbns9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

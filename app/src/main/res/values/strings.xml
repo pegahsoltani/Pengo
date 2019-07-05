@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Pengout</string>
+
+    <array name="interests">
+        <item>Concert</item>
+        <item>Movie</item>
+        <item>Theatre</item>
+        <item>Opera</item>
+        <item>Workshop</item>
+        <item>Sports</item>
+    </array>
+
+</resources>
