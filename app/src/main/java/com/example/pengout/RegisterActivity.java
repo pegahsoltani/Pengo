@@ -21,6 +21,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,6 +38,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     //defining firebaseauth object
     private FirebaseAuth firebaseAuth;
+    DatabaseReference reference;
+
+    FirebaseUser firebaseUser;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -43,6 +50,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         //initializing firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
+
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        if(firebaseUser != null){
+            Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 
         //initializing views
         editTextEmail = findViewById(R.id.editTextEmail);
@@ -104,6 +120,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
+        if(password.length() < 6){
+            Toast.makeText(this,"Password must be at least 6 characters",Toast.LENGTH_LONG).show();
+            return;
+
+        }
+
         //if the email and password are not empty
         //displaying a progress dialog
 
@@ -120,7 +142,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             Log.d("createUserWithEmail", "createUserWithEmail:success");
 //                            Log.d("createUserWithEmail:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-//                            updateUI(user);
+
+//                            String userid = user.getUid();
+//
+//                            reference = FirebaseDatabase.getInstance().getReference("users").child(userid);
+//
+//                            HashMap<String, String> hashMap = new HashMap<>();
+//                            hashMap.put("id", userid);
+
                             Toast.makeText(RegisterActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(RegisterActivity.this, InformationActivity.class);
                             startActivity(intent);
@@ -134,32 +163,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                         // ...
                     }
-                });       //EmailPasswordActivity.java
+                });
 
-
-
-        //creating a new user
-//        firebaseAuth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        //checking if success
-//                        System.out.println(task);
-//                        if(task.isSuccessful()){
-//                            //display some message here
-//                            Toast.makeText(RegisterActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
-//                            Intent intent = new Intent(RegisterActivity.this, InformationActivity.class);
-//                            startActivity(intent);
-//                            return;
-//                        }else{
-//                            //display some message here
-//                            Toast.makeText(RegisterActivity.this,"This account is already registered",Toast.LENGTH_LONG).show();
-//                        }
-//                        progressDialog.dismiss();
-//
-//
-//                    }
-//                });
 
     }
 
@@ -182,7 +187,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         //if the email and password are not empty
         //displaying a progress dialog
 
-        progressDialog.setMessage("Registering Please Wait...");
+        progressDialog.setMessage("Logging in Please Wait...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -193,9 +198,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("signInWithEmail", "signInWithEmail:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Intent intent = new Intent(RegisterActivity.this, InformationActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(intent);
+                            Log.d("afterStartActivity", "afterStartActivity:success");
                             progressDialog.dismiss();
+                            return;
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("signInWithEmail", "signInWithEmail:failure", task.getException());

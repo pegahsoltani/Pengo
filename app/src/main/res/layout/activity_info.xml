@@ -21,7 +21,7 @@
         android:entries="@array/interests"></Spinner>
 
     <Button
-        android:id="@+id/buttonAddUser"
+        android:id="@+id/buttonGoChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerInterests"
@@ -31,7 +31,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonAddUser"
+        android:layout_below="@id/buttonGoChat"
         android:text="Artists"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />

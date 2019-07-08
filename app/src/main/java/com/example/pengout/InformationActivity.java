@@ -47,7 +47,7 @@ public class InformationActivity extends AppCompatActivity {
         spinnerGenre =  findViewById(R.id.spinnerInterests);
         listViewArtists =  findViewById(R.id.listViewUsers);
 
-        buttonAddArtist =  findViewById(R.id.buttonAddUser);
+        buttonAddArtist =  findViewById(R.id.buttonGoChat);
 
         //list to store artists
         users = new ArrayList<>();
