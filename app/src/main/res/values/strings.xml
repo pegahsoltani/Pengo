@@ -1,13 +1,9 @@
 <resources>
-    <string name="app_name">Pengout</string>
+    <string name="app_name">Tabs ViewPager</string>
 
-    <array name="interests">
-        <item>Concert</item>
-        <item>Movie</item>
-        <item>Theatre</item>
-        <item>Opera</item>
-        <item>Workshop</item>
-        <item>Sports</item>
-    </array>
-
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="camera">Camera</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
 </resources>
